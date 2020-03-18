@@ -94,9 +94,9 @@ BE Mod 2 Week 1 Solo Project
 
 ## User Stories
 
-```
-[ ] done
 
+[ ] done
+```
 User Story 1, Deploy your application to Heroku
 
 As a visitor or user of the site
@@ -109,9 +109,9 @@ the application must be hosted on Heroku.
 ## Shelters
 Shelters are organizations that have pets available for adoption.
 
-```
-[ ] done
 
+[ ] done
+```
 User Story 2, Shelter Index
 
 As a visitor
@@ -119,9 +119,9 @@ When I visit '/shelters'
 Then I see the name of each shelter in the system
 ```
 
-```
-[ ] done
 
+[ ] done
+```
 User Story 3, Shelter Show
 
 As a visitor
@@ -134,9 +134,9 @@ Then I see the shelter with that id including the shelter's:
 - zip
 ```
 
-```
-[ ] done
 
+[ ] done
+```
 User Story 4, Shelter Creation
 
 As a visitor
@@ -156,9 +156,9 @@ a new shelter is created,
 and I am redirected to the Shelter Index page where I see the new Shelter listed.
 ```
 
-```
-[ ] done
 
+[ ] done
+```
 User Story 5, Shelter Update
 
 As a visitor
@@ -178,9 +178,9 @@ the shelter's info is updated,
 and I am redirected to the Shelter's Show page where I see the shelter's updated info
 ```
 
-```
-[ ] done
 
+[ ] done
+```
 User Story 6, Shelter Delete
 
 As a visitor
@@ -197,9 +197,9 @@ and I am redirected to the shelter index page where I no longer see this shelter
 ## Pets
 Pets can be adopted from the Shelter. Pets belong to a shelter.
 
-```
-[ ] done
 
+[ ] done
+```
 User Story 7, Pet Index
 
 As a visitor
@@ -212,9 +212,9 @@ Then I see each Pet in the system including the Pet's:
 - name of the shelter where the pet is currently located
 ```
 
-```
-[ ] done
 
+[ ] done
+```
 User Story 8, Shelter Pets Index
 
 As a visitor
@@ -226,9 +226,9 @@ Then I see each Pet that can be adopted from that Shelter with that shelter_id i
 - sex
 ```
 
-```
-[ ] done
 
+[ ] done
+```
 User Story 9, Pet Show
 
 As a visitor
@@ -242,9 +242,9 @@ Then I see the pet with that id including the pet's:
 - adoptable/pending adoption status
 ```
 
-```
-[ ] done
 
+[ ] done
+```
 User Story 10, Shelter Pet Creation
 
 As a visitor
@@ -265,15 +265,15 @@ that pet has a status of 'adoptable',
 and I am redirected to the Shelter Pets Index page where I can see the new pet listed
 ```
 
-```
-[ ] done
 
+[ ] done
+```
 User Story 11, Pet Update
 
 As a visitor
 When I visit a Pet Show page
 Then I see a link to update that Pet "Update Pet"
-When I click the link 
+When I click the link
 I am taken to '/pets/:id/edit' where I see a form to edit the pet's data including:
 - image
 - name
@@ -286,9 +286,9 @@ the pet's data is updated,
 and I am redirected to the Pet Show page where I see the Pet's updated information
 ```
 
-```
-[ ] done
 
+[ ] done
+```
 User Story 12, Pet Delete
 
 As a visitor
@@ -305,9 +305,9 @@ and I am redirected to the pet index page where I no longer see this pet
 ## Usability
 Users should be able to use the site easily. This means making sure there are links/buttons to reach all parts of the site and the styling/layout is sensible.
 
-```
-[ ] done
 
+[ ] done
+```
 User Story 13, Shelter Update From Shelter Index Page
 
 As a visitor
@@ -317,9 +317,9 @@ When I click the link
 I should be taken to that shelters edit page where I can update its information just like in User Story 5
 ```
 
-```
-[ ] done
 
+[ ] done
+```
 User Story 14, Shelter Delete From Shelter Index Page
 
 As a visitor
@@ -329,9 +329,9 @@ When I click the link
 I am returned to the Shelter Index Page where I no longer see that shelter
 ```
 
-```
-[ ] done
 
+[ ] done
+```
 User Story 15, Pet Update From Pets Index Page
 
 As a visitor
@@ -340,9 +340,9 @@ Next to every pet, I see a link to edit that pet's info
 When I click the link
 I should be taken to that pets edit page where I can update its information just like in User Story 11
 ```
-```
-[ ] done
 
+[ ] done
+```
 User Story 16, Pet Delete From Pets Index Page
 
 As a visitor
@@ -352,9 +352,9 @@ When I click the link
 I should be taken to the pets index page where I no longer see that pet
 ```
 
-```
-[ ] done
 
+[ ] done
+```
 User Story 17, Shelter Links
 
 As a visitor
@@ -362,9 +362,9 @@ When I click on the name a shelter anywhere on the site
 Then that link takes me to that Shelter's show page
 ```
 
-```
-[ ] done
 
+[ ] done
+```
 User Story 18, Pet Links
 
 As a visitor
@@ -372,9 +372,9 @@ When I click on the name a pet anywhere on the site
 Then that link takes me to that Pet's show page
 ```
 
-```
-[ ] done
 
+[ ] done
+```
 User Story 19, Pet Index Link
 
 As a visitor
@@ -382,9 +382,9 @@ When I visit any page on the site
 Then I see a link at the top of the page that takes me to the Pet Index
 ```
 
-```
-[ ] done
 
+[ ] done
+```
 User Story 20, Shelter Index Link
 
 As a visitor
@@ -392,9 +392,9 @@ When I visit any page on the site
 Then I see a link at the top of the page that takes me to the Shelter Index
 ```
 
-```
-[ ] done
 
+[ ] done
+```
 User Story 21, Shelter Pet Index Link
 
 As a visitor
@@ -402,9 +402,9 @@ When I visit a shelter show page ('/shelters/:id')
 Then I see a link to take me to that shelter's pets page ('/shelters/:id/pets')
 ```
 
-```
-[ ] done
 
+[ ] done
+```
 User Story 22, Styling
 
 As a visitor
@@ -416,9 +416,9 @@ Then I should see a reasonably well styled page
 
 ## Extensions
 
-```
-[ ] done
 
+[ ] done
+```
 User Story 23, Shelter Pet Count
 
 As a visitor
@@ -427,9 +427,9 @@ I see a count of the number of pets at this shelter
 
 ```
 
-```
-[ ] done
 
+[ ] done
+```
 User Story 24, Adoptable Pets Display First
 
 As a visitor
@@ -438,9 +438,9 @@ I see adoptable pets listed before pets whose adoption status is pending
 
 ```
 
-```
-[ ] done
 
+[ ] done
+```
 User Story 25, Pet Filter by Adoptable Status
 
 As a visitor
@@ -453,9 +453,9 @@ And I see only the pets that are adoptable/pending adoption (respectively).
 ```
 
 
-```
-[ ] done
 
+[ ] done
+```
 User Story 26, Change Pet's Adoptable/Pending Adoption Status
 
 As a visitor
@@ -468,9 +468,9 @@ Then a 'PATCH' request is sent to '/pets/:id/adoptable' or 'pets/:id/pending' (d
 and I am redirected to the Pet Show page where I see the pet's status has been changed
 ```
 
-```
-[ ] done
 
+[ ] done
+```
 User Story 27, Sort Shelters by number of adoptable pets
 
 As a visitor
@@ -480,9 +480,9 @@ When I click on the link
 I'm taken back to the Shelters Index Page where I see all of the shelters in order of their count of adoptable pets (highest to lowest)
 ```
 
-```
-[ ] done
 
+[ ] done
+```
 User Story 28, Sort Shelters in Alphabetical Order
 
 As a visitor
