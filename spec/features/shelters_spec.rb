@@ -63,11 +63,11 @@ RSpec.describe "as a visitor, when I visit the /shelters page", type: :feature d
 
     expect(current_path).to eq('/shelters/new')
 
-    fill_in 'Name ', with: "Cat Care Society"
-    fill_in 'Address ', with: "5787 W 6th Ave"
-    fill_in 'City ', with: "Lakewood"
-    fill_in 'State ', with: "CO"
-    fill_in 'Zip ', with: "80214"
+    fill_in 'Name', with: "Cat Care Society"
+    fill_in 'Address', with: "5787 W 6th Ave"
+    fill_in 'City', with: "Lakewood"
+    fill_in 'State', with: "CO"
+    fill_in 'Zip', with: "80214"
 
     click_button "Create Shelter"
 
