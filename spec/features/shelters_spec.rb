@@ -23,7 +23,7 @@ RSpec.describe "as a visitor, when I visit the /shelters page", type: :feature d
     expect(page).to have_content(shelter_2.name)
   end
 
-  it "can visit an indexed shelter and see shelter data" do
+  it "then I can visit an indexed shelter and see shelter data" do
     shelter_1 = Shelter.create(
                           name: "MaxFund Dog Shelter",
                           address: "1005 Galapago St",
@@ -54,6 +54,30 @@ RSpec.describe "as a visitor, when I visit the /shelters page", type: :feature d
     expect(page).to have_content(shelter_2.city)
     expect(page).to have_content(shelter_2.state)
     expect(page).to have_content(shelter_2.zip)
+  end
+
+  it "then I see a link to create a new shelter and can go create a new shelter" do
+    visit "/shelters"
+
+    click_link "New Shelter"
+
+    expect(current_path).to eq('/shelters/new')
+
+    fill_in 'Name ', with: "Cat Care Society"
+    fill_in 'Address ', with: "5787 W 6th Ave"
+    fill_in 'City ', with: "Lakewood"
+    fill_in 'State ', with: "CO"
+    fill_in 'Zip ', with: "80214"
+
+    click_button "Create Shelter"
+
+    expect(current_path).to eq("/shelters")
+
+    expect(page).to have_content("Cat Care Society")
+    expect(page).to have_content("5787 W 6th Ave")
+    expect(page).to have_content("Lakewood")
+    expect(page).to have_content("CO")
+    expect(page).to have_content("80214")
   end
 end
 
