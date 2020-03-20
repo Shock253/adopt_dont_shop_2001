@@ -14,6 +14,8 @@ class SheltersController < ApplicationController
     redirect_to '/shelters'
   end
 
+  def edit; end
+
   private
   def shelter_params
     params.permit(:name, :address, :city, :state, :zip)
