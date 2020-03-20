@@ -74,10 +74,6 @@ RSpec.describe "as a visitor, when I visit the /shelters page", type: :feature d
     expect(current_path).to eq("/shelters")
 
     expect(page).to have_content("Cat Care Society")
-    expect(page).to have_content("5787 W 6th Ave")
-    expect(page).to have_content("Lakewood")
-    expect(page).to have_content("CO")
-    expect(page).to have_content("80214")
   end
 end
 
