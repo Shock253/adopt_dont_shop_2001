@@ -84,23 +84,30 @@ RSpec.describe "as a visitor", type: :feature do
       expect(page).to have_content("CO")
       expect(page).to have_content("80214")
     end
+
+    it "then I can delete a shelter from the database" do
+      visit "/shelters/#{shelter_1.id}"
+
+      click_link 'Delete Shelter'
+
+      expect(current_path).to eq('/shelters')
+
+      expect(page).to not_have_content("MaxFund Dog Shelter")
+      expect(page).to not_have_content("1005 Galapago St")
+      expect(page).to not_have_content("Denver")
+      expect(page).to not_have_content("CO")
+      expect(page).to not_have_content("80204")
+    end
   end
 end
 
-# User Story 5, Shelter Update
+
+# User Story 6, Shelter Delete
 #
 # As a visitor
 # When I visit a shelter show page
-# Then I see a link to update the shelter "Update Shelter"
-# When I click the link "Update Shelter"
-# Then I am taken to '/shelters/:id/edit' where I  see a form to edit the shelter's data including:
-# - name
-# - address
-# - city
-# - state
-# - zip
-# When I fill out the form with updated information
-# And I click the button to submit the form
-# Then a `PATCH` request is sent to '/shelters/:id',
-# the shelter's info is updated,
-# and I am redirected to the Shelter's Show page where I see the shelter's updated info
+# Then I see a link to delete the shelter
+# When I click the link "Delete Shelter"
+# Then a 'DELETE' request is sent to '/shelters/:id',
+# the shelter is deleted,
+# and I am redirected to the shelter index page where I no longer see this shelter
