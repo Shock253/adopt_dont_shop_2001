@@ -1,23 +1,21 @@
 require 'rails_helper'
 
-RSpec.describe "as a visitor", type: :feature do
-  describe "when I visit the /shelters page" do
-    shelter_1 = Shelter.create(
-                          name: "MaxFund Dog Shelter",
-                          address: "1005 Galapago St",
-                          city: "Denver",
-                          state: "CO",
-                          zip: "80204"
-                        )
-    shelter_2 = Shelter.create(
-                          name: "Denver Animal Shelter",
-                          address: "1241 W Bayaud Ave",
-                          city: "Denver",
-                          state: "CO",
-                          zip: "80223"
-                        )
-
+RSpec.describe "as a visitor when I visit the /shelters page", type: :feature do
     it "then I can visit the shelter index and show all shelter names" do
+      shelter_1 = Shelter.create(
+                            name: "MaxFund Dog Shelter",
+                            address: "1005 Galapago St",
+                            city: "Denver",
+                            state: "CO",
+                            zip: "80204"
+                          )
+      shelter_2 = Shelter.create(
+                            name: "Denver Animal Shelter",
+                            address: "1241 W Bayaud Ave",
+                            city: "Denver",
+                            state: "CO",
+                            zip: "80223"
+                          )
       visit "/shelters"
 
       expect(page).to have_content(shelter_1.name)
@@ -25,6 +23,21 @@ RSpec.describe "as a visitor", type: :feature do
     end
 
     it "then I can visit an indexed shelter and see shelter data" do
+      shelter_1 = Shelter.create(
+                            name: "MaxFund Dog Shelter",
+                            address: "1005 Galapago St",
+                            city: "Denver",
+                            state: "CO",
+                            zip: "80204"
+                          )
+      shelter_2 = Shelter.create(
+                            name: "Denver Animal Shelter",
+                            address: "1241 W Bayaud Ave",
+                            city: "Denver",
+                            state: "CO",
+                            zip: "80223"
+                          )
+
       visit "/shelters/#{shelter_1.id}"
 
       expect(page).to have_content(shelter_1.name)
@@ -43,6 +56,21 @@ RSpec.describe "as a visitor", type: :feature do
     end
 
     it "then I see a link to create a new shelter and can go create a new shelter" do
+      shelter_1 = Shelter.create(
+                            name: "MaxFund Dog Shelter",
+                            address: "1005 Galapago St",
+                            city: "Denver",
+                            state: "CO",
+                            zip: "80204"
+                          )
+      shelter_2 = Shelter.create(
+                            name: "Denver Animal Shelter",
+                            address: "1241 W Bayaud Ave",
+                            city: "Denver",
+                            state: "CO",
+                            zip: "80223"
+                          )
+
       visit "/shelters"
 
       click_link "New Shelter"
@@ -63,6 +91,21 @@ RSpec.describe "as a visitor", type: :feature do
     end
 
     it "then I can go to a shelter update page and update a shelter" do
+      shelter_1 = Shelter.create(
+                            name: "MaxFund Dog Shelter",
+                            address: "1005 Galapago St",
+                            city: "Denver",
+                            state: "CO",
+                            zip: "80204"
+                          )
+      shelter_2 = Shelter.create(
+                            name: "Denver Animal Shelter",
+                            address: "1241 W Bayaud Ave",
+                            city: "Denver",
+                            state: "CO",
+                            zip: "80223"
+                          )
+
       visit "/shelters/#{shelter_1.id}"
 
       click_link 'Update Shelter'
@@ -86,28 +129,27 @@ RSpec.describe "as a visitor", type: :feature do
     end
 
     it "then I can delete a shelter from the database" do
+      shelter_1 = Shelter.create(
+                            name: "MaxFund Dog Shelter",
+                            address: "1005 Galapago St",
+                            city: "Denver",
+                            state: "CO",
+                            zip: "80204"
+                          )
+      shelter_2 = Shelter.create(
+                            name: "Denver Animal Shelter",
+                            address: "1241 W Bayaud Ave",
+                            city: "Denver",
+                            state: "CO",
+                            zip: "80223"
+                          )
+
       visit "/shelters/#{shelter_1.id}"
 
       click_link 'Delete Shelter'
 
       expect(current_path).to eq('/shelters')
 
-      expect(page).to not_have_content("MaxFund Dog Shelter")
-      expect(page).to not_have_content("1005 Galapago St")
-      expect(page).to not_have_content("Denver")
-      expect(page).to not_have_content("CO")
-      expect(page).to not_have_content("80204")
+      expect(page).to have_no_content("MaxFund Dog Shelter")
     end
-  end
 end
-
-
-# User Story 6, Shelter Delete
-#
-# As a visitor
-# When I visit a shelter show page
-# Then I see a link to delete the shelter
-# When I click the link "Delete Shelter"
-# Then a 'DELETE' request is sent to '/shelters/:id',
-# the shelter is deleted,
-# and I am redirected to the shelter index page where I no longer see this shelter
