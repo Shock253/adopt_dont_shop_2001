@@ -10,4 +10,8 @@ RSpec.describe Shelter, type: :model do
       should validate_presence_of :zip
     end
   end
+
+  describe "relationships" do
+    it {should have_many :pets}
+  end
 end
