@@ -1,0 +1,9 @@
+<% @shelter.pets.each do |pet| %>
+  <% img = asset_path(pet.image) %>
+  <img src="<%= img %>" alt="<%= pet.name %>">
+  <h2><%= pet.name %></h2>
+  <p>
+    <%= pet.age %>
+    <%= pet.sex %>
+  </p>
+<% end %>
