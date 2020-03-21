@@ -29,7 +29,7 @@ RSpec.describe "As a visitor,", type: :feature do
           adoption_status: "adoptable"
         )
 
-    @pet_2 = @shelter_2.pets.create(
+    @pet_2 = @shelter_1.pets.create(
           image: "/images/hector.jpg",
           name: "Hector",
           description: "Trying to kill you",
@@ -60,11 +60,14 @@ RSpec.describe "As a visitor,", type: :feature do
   along with its info" do
 
     visit "/shelters/#{@shelter_1.id}/pets"
-    
+
     expect(page).to have_css("img[src*='meatball.jpg']")
     expect(page).to have_content("Meatball")
     expect(page).to have_content(1)
     expect(page).to have_content("Male")
+
+    expect(page).not_to have_css("img[src*='hector.jpg']")
+    expect(page).not_to have_content("Hector")
   end
 end
 
