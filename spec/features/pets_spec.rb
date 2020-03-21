@@ -32,18 +32,14 @@ RSpec.describe "As a visitor, when I visit /pets", type: :feature do
     visit '/pets'
 
     expect(page).to have_content("Meatball")
-    expect(page).to have_content("Trying his best")
     expect(page).to have_content(1)
     expect(page).to have_content("Male")
-    expect(page).to have_content("Adoptable")
     expect(page).to have_content("Denver Animal Shelter")
 
 
     expect(page).to have_content("Hector")
-    expect(page).to have_content("Trying to kill you")
     expect(page).to have_content(3)
     expect(page).to have_content("Male")
-    expect(page).to have_content("Pending Adoption")
   end
 end
 
