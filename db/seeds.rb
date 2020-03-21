@@ -22,7 +22,7 @@ shelter_2 = Shelter.create(
                       )
 
 pet_1 = shelter_1.pets.create(
-      image: "/images/meatball.jpg",
+      image: "meatball.jpg",
       name: "Meatball",
       description: "Trying his best",
       age: 1,
@@ -31,7 +31,7 @@ pet_1 = shelter_1.pets.create(
     )
 
 pet_2 = shelter_1.pets.create(
-      image: "/images/hector.jpg",
+      image: "hector.jpg",
       name: "Hector",
       description: "Trying to kill you",
       age: 3,
