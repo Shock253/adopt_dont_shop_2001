@@ -154,10 +154,20 @@ RSpec.describe "as a visitor", type: :feature do
 
     expect(page).to have_no_content("MaxFund Dog Shelter")
   end
+
+  it "when I visit any shelter show page,
+  I can click a link to go to that shelter's pet index page" do
+    visit "/shelters/#{@shelter_1.id}"
+
+    click_link "This Shelter's Pets"
+
+    expect(current_path).to eq("/shelters/#{@shelter_1.id}/pets")
+  end
 end
 
-# User Story 17, Shelter Links
+
+# User Story 21, Shelter Pet Index Link
 #
 # As a visitor
-# When I click on the name a shelter anywhere on the site
-# Then that link takes me to that Shelter's show page
+# When I visit a shelter show page ('/shelters/:id')
+# Then I see a link to take me to that shelter's pets page ('/shelters/:id/pets')
