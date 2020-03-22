@@ -1,0 +1,11 @@
+<img src="<%= @pet.image %>" alt="<%= @pet.name %>">
+<h2><%= @pet.name %></h2>
+<p>
+  <%= @pet.description %>
+  <%= @pet.age %>
+  <%= @pet.sex %>
+  <%= @pet.adoption_status %>
+</p>
+
+<%= link_to 'Update Pet', "/pets/#{@pet.id}/edit" %>
+<%= link_to 'Delete Pet', "/pets/#{@pet.id}", method: :delete %>
