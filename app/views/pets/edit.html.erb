@@ -1,0 +1,21 @@
+<%= form_tag "/pets/#{@pet.id}", method: :put do %>
+  <%= label_tag :image %>
+  <%= text_field_tag :image, @pet.image %>
+
+  <%= label_tag :name %>
+  <%= text_field_tag :name, @pet.name %>
+
+  <%= label_tag :description %>
+  <%= text_field_tag :description, @pet.description %>
+
+  <%= label_tag :age %>
+  <%= text_field_tag :age, @pet.age %>
+
+  <%= label_tag :sex %>
+  <%= text_field_tag :sex, @pet.sex %>
+
+  <%= label_tag :adoption_status %>
+  <%= text_field_tag :adoption_status, @pet.adoption_status %>
+
+  <%= submit_tag 'Update Pet' %>
+<% end %>
