@@ -143,14 +143,94 @@ RSpec.describe "As a visitor,", type: :feature do
 
     expect(page).not_to have_content("Meatball")
   end
+
+  it "when I visit the pets index page
+  or a shelter pets index page,
+  there is a link to edit each pet that lets me edit the pet" do
+    visit "/pets"
+
+    click_link "Edit", href: "/pets/#{@pet_1.id}/edit"
+
+    expect(current_path).to eq("/pets/#{@pet_1.id}/edit")
+
+    fill_in 'Image', with: "https://vetmed.illinois.edu/wp-content/uploads/2017/12/pc-keller-hedgehog.jpg"
+    fill_in 'Name', with: "Reginald"
+    fill_in 'Description', with: "Soft boi"
+    fill_in 'Age', with: 2
+    fill_in 'Sex', with: "Male"
+
+    click_button 'Update Pet'
+
+    expect(current_path).to eq("/pets/#{@pet_1.id}")
+
+    expect(page).to have_css("img[src='https://vetmed.illinois.edu/wp-content/uploads/2017/12/pc-keller-hedgehog.jpg']")
+    expect(page).to have_content("Reginald")
+    expect(page).to have_content("Soft boi")
+    expect(page).to have_content(2)
+    expect(page).to have_content("Male")
+
+
+
+    visit "/shelters/#{@shelter_1.id}/pets"
+
+    click_link "Edit", href: "/pets/#{@pet_1.id}/edit"
+
+    expect(current_path).to eq("/pets/#{@pet_1.id}/edit")
+
+    fill_in "Image", with: "https://upload.wikimedia.org/wikipedia/commons/6/66/An_up-close_picture_of_a_curious_male_domestic_shorthair_tabby_cat.jpg"
+    fill_in "Name", with: "Hector"
+    fill_in "Description", with: "Trying to kill you"
+    fill_in "Age", with: 3
+    fill_in "Sex", with: "Male"
+
+    click_button 'Update Pet'
+
+    expect(current_path).to eq("/pets/#{@pet_1.id}")
+
+    expect(page).to have_css("img[src='https://upload.wikimedia.org/wikipedia/commons/6/66/An_up-close_picture_of_a_curious_male_domestic_shorthair_tabby_cat.jpg']")
+    expect(page).to have_content("Hector")
+    expect(page).to have_content("Trying to kill you")
+    expect(page).to have_content(3)
+    expect(page).to have_content("Male")
+  end
+
+  it "when I visit the pets index page
+  or a shelter pets index page,
+  there is a link to delete each pet that lets me delete the pet" do
+    visit "/pets"
+
+    click_link "Delete", href:"/pets/#{@pet_1.id}"
+
+    expect(current_path).to eq("/pets")
+
+    expect(page).not_to have_content("Meatball")
+
+    @pet_1 = @shelter_1.pets.create(
+          image: "https://external-preview.redd.it/noQNH1z-l-iM70pfcuMat96eW7LPar8HM_oGrIdEnT4.jpg?width=640&crop=smart&auto=webp&s=b19dff5d345bf94eac9a2f6d662591c0213ab239",
+          name: "Meatball",
+          description: "Trying his best",
+          age: 1,
+          sex: "Male",
+          adoption_status: "adoptable"
+        )
+
+    visit "/shelters/#{@shelter_1.id}/pets"
+
+    click_link "Delete", href:"/pets/#{@pet_1.id}"
+
+    expect(current_path).to eq("/pets")
+
+    expect(page).not_to have_content("Meatball")
+  end
 end
 
-# User Story 12, Pet Delete
+# User Story 18, Pet Links
 #
 # As a visitor
-# When I visit a pet show page
-# Then I see a link to delete the pet "Delete Pet"
-# When I click the link
-# Then a 'DELETE' request is sent to '/pets/:id',
-# the pet is deleted,
-# and I am redirected to the pet index page where I no longer see this pet
+# When I click on the name a pet anywhere on the site
+# Then that link takes me to that Pet's show page
+
+# NOTE - deleting and editing pets returns the user back to
+#        the pets index page, even if they're currently at a
+#        shelter pets index page
+# TODO - Change this? Define a better user story for this
