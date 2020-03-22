@@ -155,11 +155,3 @@ RSpec.describe "as a visitor", type: :feature do
     expect(page).to have_no_content("MaxFund Dog Shelter")
   end
 end
-
-# User Story 14, Shelter Delete From Shelter Index Page
-#
-# As a visitor
-# When I visit the shelter index page
-# Next to every shelter, I see a link to delete that shelter
-# When I click the link
-# I am returned to the Shelter Index Page where I no longer see that shelter
