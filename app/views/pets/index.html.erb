@@ -5,7 +5,7 @@
     <p>
       <%= pet.age %>
       <%= pet.sex %>
-      <%= shelter.name %>
+      <a href="/shelters/<%= shelter.id %>"><%= shelter.name %></a>
 
     </p>
     <%= link_to 'Edit', "/pets/#{pet.id}/edit" %>
