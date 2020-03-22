@@ -193,12 +193,46 @@ RSpec.describe "As a visitor,", type: :feature do
     expect(page).to have_content(3)
     expect(page).to have_content("Male")
   end
+
+  it "when I visit the pets index page
+  or a shelter pets index page,
+  there is a link to delete each pet that lets me delete the pet" do
+    visit "/pets"
+
+    click_link "Delete", href:"/pets/#{@pet_1.id}"
+
+    expect(current_path).to eq("/pets")
+
+    expect(page).not_to have_content("Meatball")
+
+    @pet_1 = @shelter_1.pets.create(
+          image: "https://external-preview.redd.it/noQNH1z-l-iM70pfcuMat96eW7LPar8HM_oGrIdEnT4.jpg?width=640&crop=smart&auto=webp&s=b19dff5d345bf94eac9a2f6d662591c0213ab239",
+          name: "Meatball",
+          description: "Trying his best",
+          age: 1,
+          sex: "Male",
+          adoption_status: "adoptable"
+        )
+
+    visit "/shelters/#{@shelter_1.id}/pets"
+
+    click_link "Delete", href:"/pets/#{@pet_1.id}"
+
+    expect(current_path).to eq("/pets")
+
+    expect(page).not_to have_content("Meatball")
+  end
 end
 
-# User Story 15, Pet Update From Pets Index Page
+# NOTE - deleting and editing pets returns the user back to
+#        the pets index page, even if they're currently at a
+#        shelter pets index page
+# TODO - Change this? Define a better user story for this
+
+# User Story 16, Pet Delete From Pets Index Page
 #
 # As a visitor
 # When I visit the pets index page or a shelter pets index page
-# Next to every pet, I see a link to edit that pet's info
+# Next to every pet, I see a link to delete that pet
 # When I click the link
-# I should be taken to that pets edit page where I can update its information just like in User Story 11
+# I should be taken to the pets index page where I no longer see that pet
