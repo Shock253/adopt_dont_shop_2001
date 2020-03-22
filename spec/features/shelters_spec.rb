@@ -120,7 +120,7 @@ RSpec.describe "as a visitor", type: :feature do
   end
 
   it "when I visit the shelter index page,
-  I can edit every shelter's info by clicking an update link" do
+  I can edit every shelter's info by clicking an edit link" do
 
     visit '/shelters'
 
@@ -143,4 +143,23 @@ RSpec.describe "as a visitor", type: :feature do
     expect(page).to have_content("CO")
     expect(page).to have_content("80214")
   end
+
+  it "when I visit the shelter index page,
+  I can delete each shelter by clicking a delete link" do
+    visit "/shelters"
+
+    click_link "Delete", href: "/shelters/#{@shelter_1.id}"
+
+    expect(current_path).to eq('/shelters')
+
+    expect(page).to have_no_content("MaxFund Dog Shelter")
+  end
 end
+
+# User Story 14, Shelter Delete From Shelter Index Page
+#
+# As a visitor
+# When I visit the shelter index page
+# Next to every shelter, I see a link to delete that shelter
+# When I click the link
+# I am returned to the Shelter Index Page where I no longer see that shelter
