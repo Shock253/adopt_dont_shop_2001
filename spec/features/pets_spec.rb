@@ -69,15 +69,29 @@ RSpec.describe "As a visitor,", type: :feature do
     expect(page).not_to have_css("img[src*='hector.jpg']")
     expect(page).not_to have_content("Hector")
   end
+
+  it "when I visit /pets/:id
+  then I see the pet with that id and their information" do
+    visit "/pets/#{@pet_1.id}"
+
+    expect(page).to have_css("img[src*='meatball.jpg']")
+    expect(page).to have_content("Meatball")
+    expect(page).to have_content("Trying his best")
+    expect(page).to have_content(1)
+    expect(page).to have_content("Male")
+    expect(page).to have_content("adoptable")
+  end
 end
 
 
-# User Story 8, Shelter Pets Index
+# User Story 9, Pet Show
 #
 # As a visitor
-# When I visit '/shelters/:shelter_id/pets'
-# Then I see each Pet that can be adopted from that Shelter with that shelter_id including the Pet's:
+# When I visit '/pets/:id'
+# Then I see the pet with that id including the pet's:
 # - image
 # - name
+# - description
 # - approximate age
 # - sex
+# - adoptable/pending adoption status
