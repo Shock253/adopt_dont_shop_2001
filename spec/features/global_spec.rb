@@ -3,6 +3,7 @@ require 'rails_helper'
 RSpec.describe "As a visitor,
 when I visit any page on the site", type: :feature do
   before :each do
+
     @shelter_1 = Shelter.create(
           name: "Denver Animal Shelter",
           address: "1241 W Bayaud Ave",
@@ -38,6 +39,19 @@ when I visit any page on the site", type: :feature do
           sex: "Male",
           adoption_status: "pending adoption"
         )
+
+
+    @pages = [
+      "/shelters",
+      "/shelters/new",
+      "/shelters/#{@shelter_1.id}",
+      "/shelters/#{@shelter_1.id}/edit",
+      "/shelters/#{@shelter_1.id}/pets",
+      "/shelters/#{@shelter_1.id}/pets/new",
+      "/pets",
+      "/pets/#{@pet_1.id}",
+      "/pets/#{@pet_1.id}/edit"
+    ]
   end
 
   it "when I click on the name of any shelter on the site
@@ -59,21 +73,41 @@ when I visit any page on the site", type: :feature do
     end
   end
 
-  it "when I click on the name of a pet anywhere on the site,
+  it "when I click on the name of any pet on the site,
   I am taken to that pet's show page" do
 
-    visit "/pets"
-    find_all(:link, @pet_1.name).each do |link|
-      link.click
-      expect(current_path).to eq("/pets/#{@pet_1.id}")
-      visit '/pets'
-    end
+    @pages.each do |href|
+      find_all(:link, @pet_1.name).each do |link|
+        visit href
 
-    visit "/shelters/#{@shelter_1.id}/pets"
-    find_all(:link, @pet_1.name).each do |link|
-      link.click
-      expect(current_path).to eq("/pets/#{@pet_1.id}")
-      visit "/shelters/#{@shelter_1.id}/pets"
+        link.click
+        expect(current_path).to eq("/pets/#{@pet_1.id}")
+      end
+    end
+  end
+
+  it "then I see a link at the top of the page that takes me to the Pet Index" do
+    @pages.each do |href|
+      visit href
+
+      click_link "All Pets", href: "/pets"
+      expect(current_path).to eq("/pets")
+    end
+  end
+
+  it "then I see a link at the top of the page that takes me to the Shelters Index" do
+    @pages.each do |href|
+      visit href
+
+      click_link "Shelters", href: "/shelters"
+      expect(current_path).to eq("/shelters")
     end
   end
 end
+
+
+# User Story 19, Pet Index Link
+#
+# As a visitor
+# When I visit any page on the site
+# Then I see a link at the top of the page that takes me to the Pet Index
