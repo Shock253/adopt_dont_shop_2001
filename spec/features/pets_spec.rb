@@ -81,17 +81,48 @@ RSpec.describe "As a visitor,", type: :feature do
     expect(page).to have_content("Male")
     expect(page).to have_content("adoptable")
   end
+
+  it "when I visit a shelter pets index page,
+  then I see a link to add a new adoptable pet,
+  when I click the link, I can create a new pet" do
+    visit "/shelters/#{@shelter_1.id}/pets"
+
+    click_link 'Create Pet'
+
+    expect(current_path).to eq("/shelters/#{@shelter_1.id}/pets/new")
+
+    fill_in 'Image', with: "/images/hector.jpg"
+    fill_in 'Name', with: "Hector"
+    fill_in 'Description', with: "Trying to kill you"
+    fill_in 'Age', with: 3
+    fill_in 'Sex', with: "Male"
+
+    click_button "Create Pet"
+
+    expect(current_path).to eq("/shelters/#{@shelter_1.id}/pets")
+
+    expect(page).to have_css("img[src*='hector.jpg']")
+    expect(page).to have_content("Hector")
+
+  end
 end
 
 
-# User Story 9, Pet Show
+# User Story 10, Shelter Pet Creation
 #
 # As a visitor
-# When I visit '/pets/:id'
-# Then I see the pet with that id including the pet's:
+# When I visit a Shelter Pets Index page
+# Then I see a link to add a new adoptable pet for that shelter "Create Pet"
+# When I click the link
+# I am taken to '/shelters/:shelter_id/pets/new' where I see a form to add a new adoptable pet
+# When I fill in the form with the pet's:
 # - image
 # - name
 # - description
 # - approximate age
-# - sex
-# - adoptable/pending adoption status
+# - sex ('female' or 'male')
+# And I click the button "Create Pet"
+# Then a `POST` request is sent to '/shelters/:shelter_id/pets',
+# a new pet is created for that shelter,
+# that pet has a status of 'adoptable',
+# and I am redirected to the Shelter Pets Index page where I can see the new pet listed
