@@ -124,7 +124,7 @@ RSpec.describe "as a visitor", type: :feature do
 
     visit '/shelters'
 
-    click_link "Edit", href: "/shelters/#{@shelter_1.id}"
+    click_link "Edit", href: "/shelters/#{@shelter_1.id}/edit"
 
     expect(current_path).to eq "/shelters/#{@shelter_1.id}/edit"
 
