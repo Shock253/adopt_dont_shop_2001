@@ -222,24 +222,6 @@ RSpec.describe "As a visitor,", type: :feature do
 
     expect(page).not_to have_content("Meatball")
   end
-
-  it "when I click on the name of a pet anywhere on the site,
-  I am taken to that pet's show page" do
-
-    visit "/pets"
-    find_all(:link, @pet_1.name).each do |link|
-      link.click
-      expect(current_path).to eq("/pets/#{@pet_1.id}")
-      visit '/pets'
-    end
-
-    visit "/shelters/#{@shelter_1.id}/pets"
-    find_all(:link, @pet_1.name).each do |link|
-      link.click
-      expect(current_path).to eq("/pets/#{@pet_1.id}")
-      visit "/shelters/#{@shelter_1.id}/pets"
-    end
-  end
 end
 
 # User Story 18, Pet Links
