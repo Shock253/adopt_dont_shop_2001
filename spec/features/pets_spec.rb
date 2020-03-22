@@ -21,7 +21,7 @@ RSpec.describe "As a visitor,", type: :feature do
 
 
     @pet_1 = @shelter_1.pets.create(
-          image: "/images/meatball.jpg",
+          image: "https://external-preview.redd.it/noQNH1z-l-iM70pfcuMat96eW7LPar8HM_oGrIdEnT4.jpg?width=640&crop=smart&auto=webp&s=b19dff5d345bf94eac9a2f6d662591c0213ab239",
           name: "Meatball",
           description: "Trying his best",
           age: 1,
@@ -30,7 +30,7 @@ RSpec.describe "As a visitor,", type: :feature do
         )
 
     @pet_2 = @shelter_1.pets.create(
-          image: "/images/hector.jpg",
+          image: "https://upload.wikimedia.org/wikipedia/commons/6/66/An_up-close_picture_of_a_curious_male_domestic_shorthair_tabby_cat.jpg",
           name: "Hector",
           description: "Trying to kill you",
           age: 3,
@@ -43,13 +43,13 @@ RSpec.describe "As a visitor,", type: :feature do
   then I can see each pet in the system and their information" do
     visit '/pets'
 
-    expect(page).to have_css("img[src*='meatball.jpg']")
+    expect(page).to have_css("img[src='https://external-preview.redd.it/noQNH1z-l-iM70pfcuMat96eW7LPar8HM_oGrIdEnT4.jpg?width=640&crop=smart&auto=webp&s=b19dff5d345bf94eac9a2f6d662591c0213ab239']")
     expect(page).to have_content("Meatball")
     expect(page).to have_content(1)
     expect(page).to have_content("Male")
     expect(page).to have_content("Denver Animal Shelter")
 
-    expect(page).to have_css("img[src*='hector.jpg']")
+    expect(page).to have_css("img[src='https://upload.wikimedia.org/wikipedia/commons/6/66/An_up-close_picture_of_a_curious_male_domestic_shorthair_tabby_cat.jpg']")
     expect(page).to have_content("Hector")
     expect(page).to have_content(3)
     expect(page).to have_content("Male")
@@ -61,12 +61,12 @@ RSpec.describe "As a visitor,", type: :feature do
 
     visit "/shelters/#{@shelter_1.id}/pets"
 
-    expect(page).to have_css("img[src*='meatball.jpg']")
+    expect(page).to have_css("img[src='https://external-preview.redd.it/noQNH1z-l-iM70pfcuMat96eW7LPar8HM_oGrIdEnT4.jpg?width=640&crop=smart&auto=webp&s=b19dff5d345bf94eac9a2f6d662591c0213ab239']")
     expect(page).to have_content("Meatball")
     expect(page).to have_content(1)
     expect(page).to have_content("Male")
 
-    expect(page).not_to have_css("img[src*='hector.jpg']")
+    expect(page).not_to have_css("img[src='https://upload.wikimedia.org/wikipedia/commons/6/66/An_up-close_picture_of_a_curious_male_domestic_shorthair_tabby_cat.jpg']")
     expect(page).not_to have_content("Hector")
   end
 
@@ -74,7 +74,7 @@ RSpec.describe "As a visitor,", type: :feature do
   then I see the pet with that id and their information" do
     visit "/pets/#{@pet_1.id}"
 
-    expect(page).to have_css("img[src*='meatball.jpg']")
+    expect(page).to have_css("img[src='https://external-preview.redd.it/noQNH1z-l-iM70pfcuMat96eW7LPar8HM_oGrIdEnT4.jpg?width=640&crop=smart&auto=webp&s=b19dff5d345bf94eac9a2f6d662591c0213ab239']")
     expect(page).to have_content("Meatball")
     expect(page).to have_content("Trying his best")
     expect(page).to have_content(1)
@@ -91,18 +91,18 @@ RSpec.describe "As a visitor,", type: :feature do
 
     expect(current_path).to eq("/shelters/#{@shelter_1.id}/pets/new")
 
-    fill_in 'Image', with: "/images/hector.jpg"
-    fill_in 'Name', with: "Hector"
-    fill_in 'Description', with: "Trying to kill you"
-    fill_in 'Age', with: 3
+    fill_in 'Image', with: "https://vetmed.illinois.edu/wp-content/uploads/2017/12/pc-keller-hedgehog.jpg"
+    fill_in 'Name', with: "Reginald"
+    fill_in 'Description', with: "Soft boi"
+    fill_in 'Age', with: 2
     fill_in 'Sex', with: "Male"
 
     click_button "Create Pet"
 
     expect(current_path).to eq("/shelters/#{@shelter_1.id}/pets")
 
-    expect(page).to have_css("img[src*='hector.jpg']")
-    expect(page).to have_content("Hector")
+    expect(page).to have_content("Reginald")
+    expect(page).to have_css("img[src='https://vetmed.illinois.edu/wp-content/uploads/2017/12/pc-keller-hedgehog.jpg']")
 
   end
 end
