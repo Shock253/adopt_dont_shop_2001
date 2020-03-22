@@ -132,22 +132,25 @@ RSpec.describe "As a visitor,", type: :feature do
     expect(page).to have_content("Male")
     expect(page).to have_content('pending adoption')
   end
+
+  it "when I visit a pet show page,
+  I see a link to delete the pet, and can delete the pet from the index page" do
+    visit "/pets/#{@pet_1.id}"
+
+    click_link 'Delete Pet'
+
+    expect(current_path).to eq("/pets")
+
+    expect(page).not_to have_content("Meatball")
+  end
 end
 
-
-# User Story 11, Pet Update
+# User Story 12, Pet Delete
 #
 # As a visitor
-# When I visit a Pet Show page
-# Then I see a link to update that Pet "Update Pet"
+# When I visit a pet show page
+# Then I see a link to delete the pet "Delete Pet"
 # When I click the link
-# I am taken to '/pets/:id/edit' where I see a form to edit the pet's data including:
-# - image
-# - name
-# - description
-# - approximate age
-# - sex
-# When I click the button to submit the form "Update Pet"
-# Then a `PATCH` request is sent to '/pets/:id',
-# the pet's data is updated,
-# and I am redirected to the Pet Show page where I see the Pet's updated information
+# Then a 'DELETE' request is sent to '/pets/:id',
+# the pet is deleted,
+# and I am redirected to the pet index page where I no longer see this pet
