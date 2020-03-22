@@ -24,6 +24,10 @@ class SheltersController < ApplicationController
   end
 
   def destroy
+    shelter = Shelter.find(params[:id])
+    shelter.pets.all.each do |pet|
+      Pet.destroy(pet.id)
+    end
     Shelter.destroy(params[:id])
     redirect_to "/shelters"
   end
@@ -33,3 +37,7 @@ class SheltersController < ApplicationController
     params.permit(:name, :address, :city, :state, :zip)
   end
 end
+
+# NOTE - destroying a shelter will destroy every pet that
+#       belongs to that shelter
+# TODO - Test this functionality? definitely ask client for user story
