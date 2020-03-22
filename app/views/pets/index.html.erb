@@ -6,6 +6,8 @@
       <%= pet.age %>
       <%= pet.sex %>
       <%= shelter.name %>
+
     </p>
+    <%= link_to 'Edit', "/pets/#{pet.id}/edit" %>
   <% end %>
 <% end %>
