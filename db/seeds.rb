@@ -22,19 +22,19 @@ shelter_2 = Shelter.create(
                       )
 
 pet_1 = shelter_1.pets.create(
-      image: "meatball.jpg",
+      image: "https://external-preview.redd.it/noQNH1z-l-iM70pfcuMat96eW7LPar8HM_oGrIdEnT4.jpg?width=640&crop=smart&auto=webp&s=b19dff5d345bf94eac9a2f6d662591c0213ab239",
       name: "Meatball",
       description: "Trying his best",
       age: 1,
       sex: "Male",
-      adoption_status: "Adoptable"
+      adoption_status: "adoptable"
     )
 
 pet_2 = shelter_1.pets.create(
-      image: "hector.jpg",
+      image: "https://upload.wikimedia.org/wikipedia/commons/6/66/An_up-close_picture_of_a_curious_male_domestic_shorthair_tabby_cat.jpg",
       name: "Hector",
       description: "Trying to kill you",
       age: 3,
       sex: "Male",
-      adoption_status: "Pending Adoption"
+      adoption_status: "pending adoption"
     )
