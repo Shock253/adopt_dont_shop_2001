@@ -228,11 +228,3 @@ end
 #        the pets index page, even if they're currently at a
 #        shelter pets index page
 # TODO - Change this? Define a better user story for this
-
-# User Story 16, Pet Delete From Pets Index Page
-#
-# As a visitor
-# When I visit the pets index page or a shelter pets index page
-# Next to every pet, I see a link to delete that pet
-# When I click the link
-# I should be taken to the pets index page where I no longer see that pet

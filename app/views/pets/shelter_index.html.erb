@@ -8,6 +8,7 @@
 
     </p>
     <%= link_to 'Edit', "/pets/#{pet.id}/edit" %>
+    <%= link_to 'Delete', "/pets/#{pet.id}", method: :delete %>
   <% end %>
 <% end %>
 
